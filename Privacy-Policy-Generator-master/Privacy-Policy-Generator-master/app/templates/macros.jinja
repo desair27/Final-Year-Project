@@ -1,0 +1,32 @@
+{% macro render_list(list_items) %}
+<ul>
+    {% for item in list_items %}
+    <li> {{item}} </li>
+    {% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro embed_rdfa(list, id, class_id, property,type) %}
+    <ul>
+        {% for prop in list[property] %}
+            <li><span resource ="#{{id}}" typeof="dpv:PersonalDataHandling">
+                <span property ="dpv:hasPersonalDataCategory" href="#{{class_id}}"></span>
+                <span property ="{{property}}" resource ="#{{prop|replace(' ','')}}" typeof="{{type}}">{{prop}}</span>
+            </span></li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
+{% macro tooltip(dpv, category) %}
+    <div class="tooltip"><a class="link" href="http://w3.org/ns/dpv#{{category|replace(' ','')}}">&#x1F6C8</a>
+        {% autoescape false %}
+        <span class="tooltiptext">
+            {% if(dpv[category] == None) %}
+                <p>Description not found</p>
+            {% else %}
+                {{ dpv[category] }}
+            {% endif %}
+        </span>
+        {% endautoescape %}
+    </div>
+{% endmacro %}

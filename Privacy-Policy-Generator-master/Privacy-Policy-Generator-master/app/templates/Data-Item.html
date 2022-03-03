@@ -1,0 +1,44 @@
+<article>
+    {% set category = personalData["dpv:hasPersonalDataCategory"] %}
+    {% set id = category|replace(' ','') %}
+    {% set resource = personalData["resource"] %}
+
+    <div resource="#{{id}}" id="{{id}}" typeof="{{id}}">
+        <h3>Your {{category}}</h3>
+        {{ macros.tooltip(dpv, category) }}
+
+        {% if personalData["dpv:hasPurpose"] | length != 0 %}
+            <h4>Purpose:</h4>
+            {{ macros.embed_rdfa(personalData,resource, id,"dpv:hasPurpose", "dpv:Purpose")}}
+        {% endif %}
+        {% if personalData["dpv:hasProcessing"] | length != 0 %}
+            <h4>Processing for your {{category}}: </h4>
+            {{ macros.embed_rdfa(personalData,resource, id,"dpv:hasProcessing", "dpv:Processing") }}
+        {% endif %}
+        {% if personalData["dpv:hasRecipient"] | length != 0 %}
+            <h4>Receipients:</h4>
+            {{ macros.embed_rdfa(personalData,resource, id,"dpv:hasRecipient" ,"dpv:Recipient") }}
+        {% endif %}
+        {% if personalData["dpv:Collect"] | length != 0 %}
+            <h4>Source of Data:</h4>
+            {{ macros.embed_rdfa(personalData,resource, id,"dpv:Collect" ,"dpv:Collect") }}
+        {% endif %}
+        {% if personalData["dpv:StorageDuration"] | length != 0 and personalData["dpv:StorageLocation"] | length != 0 %}
+            <h4>How the Data is Stored:</h4>
+            <ul>
+                <span resource="#{{resource}}" typeof ="dpv:PersonalDataHandling">
+                    <li><span property="dpv:duration">{{personalData["dpv:StorageDuration"]}}</span></li>
+                    <li><span property="dpv:location">{{personalData["dpv:StorageLocation"]}}</span></li>
+                </span>
+            </ul>
+        {% endif %}
+        {% if personalData["dpv:hasTechnicalOrganisationalMeasure"] | length != 0 %}
+            <h4>Safety Measures for Storage of Data :</h4>
+            {{ macros.embed_rdfa(personalData,resource, id,"dpv:hasTechnicalOrganisationalMeasure", "dpv:TechnicalOrganisationalMeasure") }}
+        {% endif %}
+        {% if personalData["dpv:hasLegalBasis"] | length != 0 %}
+            <h4>Legal basis: </h4>
+            {{ macros.embed_rdfa(personalData,resource, id,"dpv:hasLegalBasis", "dpv:LegalBasis")}}
+        {%  endif %}
+    </div>
+</article>

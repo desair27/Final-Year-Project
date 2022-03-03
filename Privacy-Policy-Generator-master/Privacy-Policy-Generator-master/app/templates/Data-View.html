@@ -1,0 +1,18 @@
+{% extends "default.html" %}
+{% block content %}
+
+    <div id="#DataView">
+        <ul>
+            {% for personalData in data["dpv:PersonalDataHandling"] %}
+                <li><a href="#{{personalData['dpv:hasPersonalDataCategory']|replace(' ','')}}">{{personalData["dpv:hasPersonalDataCategory"] }}</a></li>
+            {% endfor %}
+        </ul>
+        {% for personalData in data["dpv:PersonalDataHandling"] %}
+            
+            {% include "Data-Item.html" %}
+
+        {% endfor %}
+        <h4>This data is subject to the rights defined <a href="#Rights">here</a>.</h4>
+    </div>
+{% endblock %}
+

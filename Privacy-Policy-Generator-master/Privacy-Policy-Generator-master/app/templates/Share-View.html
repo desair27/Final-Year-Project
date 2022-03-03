@@ -1,0 +1,17 @@
+{% extends "default.html" %}
+{% block content %}
+    {% set recipients = data["dpv:Recipient"] %}
+    <div id = "ShareView">
+        <p> We disclose your personal data to the following recipients: </p>
+        <ul>
+            {% for recip in recipients %}
+                <li>{{recip["schema:name"]}}</li>
+            {% endfor %}
+        </ul>
+
+        {% for recip in recipients %}
+            {% include "Recipient.html" %}
+        {% endfor %}
+    </div>
+    <h4>This data is subject to the rights defined <a href="#Rights">here</a>.</h4>
+{% endblock %}

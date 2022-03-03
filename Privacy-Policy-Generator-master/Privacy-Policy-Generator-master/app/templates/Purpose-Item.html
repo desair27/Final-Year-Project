@@ -1,0 +1,29 @@
+
+
+<article>
+
+    {% set purpose = purp["dpv:hasPurpose"] %}
+    <h3>{{purpose}}</h3>
+    {{ macros.tooltip(dpv, purpose)}}
+
+    <span id="{{purpose|replace(' ','')}}" resource ="#Purpose:{{purpose|replace(' ','')}}" typeof="dpv:Purpose">
+        <h4>Personal Data Required: </h4>
+        <ul>
+            {%for item in purp["dpv:hasPersonalDataCategory"] %}
+                <li><span property="dpv:hasPersonalDataCategory" resource="#{{item|replace(' ','')}}">{{item}}</span></li>
+            {% endfor %}
+        </ul>
+        <h4>Processing:</h4>
+        <ul>
+            {%for item in purp["dpv:hasProcessing"] %}
+            <li><span property="dpv:hasProcessing" resource="#{{item|replace(' ','')}}">{{item}}</span></li>
+            {% endfor %}
+        </ul>
+        <h4>Legal Basis:</h4>
+        <ul>
+            {%for item in purp["dpv:hasLegalBasis"] %}
+            <li><span property="dpv:hasLegalBasis" resource="#{{item|replace(' ','')}}">{{item}}</span></li>
+            {% endfor %}
+        </ul>
+    </span>
+</article>

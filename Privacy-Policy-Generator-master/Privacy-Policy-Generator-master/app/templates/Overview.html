@@ -1,0 +1,62 @@
+{% extends "default.html" %}
+{%block content %}
+
+
+
+    <div id="PurposeView">
+
+        <p>In order to provide our service we may collect different types of personal data. This data may be directly provided by you, shared by third parties or collected through automatic means.
+        In the case of each personal data item we collect from you, we hope to indicate:
+        <li>Why we collect that data.</li>
+        <li>What we do with that data.</li>
+        <li>How we collect that data.</li>
+        <li>If we do share that data, who the recipients are.</li>
+        <li>How we store that data.</li>
+        <li>Any safety measures we may take when handling that data.</li>
+        <li>Our legal basis for collecting, processing and handling that data.</li></p>
+        <p>{{ company }} has 6 different views with their corresponding data sources: </p>
+        <li>Personal Data View</li>
+        <ul>
+            {% for personalData in data["dpv:PersonalDataHandling"] %}
+                <li>{{personalData["dpv:hasPersonalDataCategory"] }}</li>
+            {% endfor %}
+        </ul>
+        <li>Data Collection View</li>
+        <ul>
+        {{ macros.render_list(collect.keys()) }}
+            {% for key in collect %}
+                {% set col=collect[key] %}
+            {% endfor %}
+        </ul>
+        <li>Purpose View</li>
+         <ul>
+            {% for purp in data["dpv:Purpose"] %}
+                <li>{{ purp["dpv:hasPurpose"] }}</li>
+            {% endfor %}
+        </ul>
+        <li>Data Sharing View</li>
+        <ul>
+            {% for recip in data["dpv:Recipient"] %}
+                <li>{{recip["schema:name"]}}</li>
+            {% endfor %}
+        </ul>
+
+        <li>Cookies</li>
+        <ul>
+            {% for cook in data["Cookie"] %}
+                <li>{{cook["schema:name"]}}</li>
+            {% endfor %}
+        </ul>
+
+        <li>Rights</li>
+        <ul><li>Access</li></ul>
+        <ul><li>Rectification</li></ul>
+        <ul><li>Erasure</li></ul>
+        <ul><li>Restrict Processing</li></ul>
+        <ul><li>Object to processing</li></ul>
+        <ul><li>Data Portability</li></ul>
+
+
+    </div>
+
+{% endblock %}
