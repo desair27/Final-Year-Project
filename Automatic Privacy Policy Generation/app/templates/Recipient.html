@@ -1,0 +1,41 @@
+<article>
+    {% if data["dpv:Recipient"] | length != 0 %}
+        {% set name = recip["schema:name"] %}
+        <span resource="#{{recip['resource']}}" typeof="dpv:Recipient">
+            <h3><span property="schema:name">{{name}}</span></h3>
+
+
+                <h4>Description</h4>
+                <ul>
+                    <li><span property="schema:description">{{recip["schema:description"]}}</span></li>
+                </ul>
+
+            {% if recip["PersonalDataCategory"]|length != 0 %}
+                <h4>Data Shared with {{name}}:</h4>
+                <ul>
+                    {% for item in recip["PersonalDataCategory"] %}
+                        <li><span property="dpv:hasPersonalDataCategory" resource="#{{item|replace(' ','')}}">{{item}}</span></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            {% if recip["dpv:hasPurpose"]|length != 0 %}
+                <h4>Purpose:</h4>
+                <ul>
+                    {% for item in recip["dpv:hasPurpose"] %}
+                        <li><span property="dpv:hasPurpose" resource="#{{item|replace(' ','')}}">{{item}}</span></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <h4>Phone Number:</h4>
+            {% autoescape false %}
+                <h4><span property="schema:phoneNumber">{{recip["schema:phoneNumber"]}}</span></h4>
+            {% endautoescape %}
+
+            <h4>Address:</h4>
+            {% autoescape false %}
+                <h4><span property="schema:address">{{recip["schema:address"]|replace("\n","</br>")}}</span></h4>
+            {% endautoescape %}
+    </span>
+    {% else %}
+</article>

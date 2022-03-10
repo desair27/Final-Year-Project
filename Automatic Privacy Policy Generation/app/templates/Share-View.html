@@ -1,0 +1,23 @@
+{% extends "default.html" %}
+{% block content %}
+    {% set recipients = data["dpv:Recipient"] %}
+    <div id = "ShareView">
+        <p>Our services may distribute your personal data to a set of recipients</p>
+        <p>We hope to indicate from each recipient of your personal data the following:</p>
+        <li>The general purpose of the recipient</li>
+        <li>The data collected from the recipient</li>
+        <li>The recipient's phone number</li>
+        <li>The recipient's address</li>
+        <p> We disclose your personal data to the following recipients: </p>
+        <ul>
+            {% for recip in recipients %}
+                <li><a href="#{{recip['dpv:Recipient']|replace(' ','')}}">{{recip["schema:name"]}}</a></li>
+            {% endfor %}
+        </ul>
+
+        {% for recip in recipients %}
+            {% include "Recipient.html" %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

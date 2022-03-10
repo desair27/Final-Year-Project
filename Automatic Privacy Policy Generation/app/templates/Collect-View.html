@@ -1,0 +1,21 @@
+{% extends "default.html" %}
+{% block content %}
+    <div id = "CollectView">
+        <p>Our services may collect data from the user from one or more different sources.</p>
+        <p>We hope to indicate from each data source the following</p>
+        <li>What type of data is collected</li>
+        <li>Why we collect the data</li>
+        <li>What we do with that data</li>
+        <li>How we store the data</li>
+        <p>Data sources:</p>
+        {{ macros.render_list(collect.keys()) }}
+        {% for key in collect %}
+            {% set col=collect[key] %}
+            {% include "Collect-Item.html" %}
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+
+<a href="#{{purp['dpv:hasPurpose']|replace(' ','')}}">
