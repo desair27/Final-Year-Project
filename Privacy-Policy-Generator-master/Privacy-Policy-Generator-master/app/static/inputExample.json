@@ -19,6 +19,7 @@
             "dpv:hasRecipient": ["Amazon"],
             "dpv:hasTechnicalOrganisationalMeasure": ["Authentication Procedure"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Identity Theft, Accidental Exposure"],
             "dpv:Collect": ["Explicit provision by user."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -33,6 +34,7 @@
             "dpv:hasRecipient": ["Amazon"],
             "dpv:hasTechnicalOrganisationalMeasure": ["Authentication Procedure"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Identity Theft, Accidental Exposure"],
             "dpv:Collect": ["Explicit provision by user."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -48,6 +50,7 @@
             "dpv:hasRecipient": ["Amazon","Google"],
             "dpv:hasTechnicalOrganisationalMeasure": ["Authentication Procedure"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Identity Theft, Accidental Exposure"],
             "dpv:Collect": ["Explicit provision by user."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -62,6 +65,7 @@
             "dpv:hasRecipient": [],
             "dpv:hasTechnicalOrganisationalMeasure": ["Authentication Procedure"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Accidental Exposure"],
             "dpv:Collect": ["Explicit provision by user."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -77,6 +81,7 @@
             "dpv:hasRecipient": ["Google"],
             "dpv:hasTechnicalOrganisationalMeasure": ["Encryption in Rest","Authentication Procedure"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Accidental Exposure"],
             "dpv:Collect": ["Automatic collection using surveillance."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -91,6 +96,7 @@
             "dpv:hasRecipient": ["Stripe"],
             "dpv:hasTechnicalOrganisationalMeasure": ["Authentication Procedure","Encryption in Rest"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Accidental Exposure"],
             "dpv:Collect": ["Explicit provision by user."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -105,6 +111,7 @@
             "dpv:hasRecipient": [],
             "dpv:hasTechnicalOrganisationalMeasure": ["Encryption in Rest","Authentication Procedure"],
             "dpv:hasLegalBasis": ["Consent"],
+            "dpv:hasRisk": ["Accidental Exposure"],
             "dpv:Collect": ["Explicit provision by user."],
             "dpv:StorageDuration": "Data is stored for as long as you use our service and for up to three months after.",
             "dpv:StorageLocation": "Data is stored on our servers on site."
@@ -207,6 +214,32 @@
             "schema:address": "Stripe, Inc.,\nCalifornia,\n510 Townsend Street,\nSan Francisco, California 94103,\nUSA.",
             "schema:description": "Secure Payments Provider",
             "schema:phoneNumber": "091 791 2113"
+        }
+    ],
+    "dpv:TechnicalOrganisationalMeasure": [
+        {
+            "resource": "safetyMeasure1",
+            "schema:name":"Authentication Procedure",
+            "schema:description": "Procedures for determining authorisation through permission or authority",
+            "dpv:hasPersonalDataCategory": ["Name,Age,Email Address,Telephone Number,IPAddress,Credit Card Number,Password"]
+        },
+        {
+            "resource": "safetyMeasure2",
+            "schema:name":"Encryption in Rest",
+            "schema:description": "Encryption of data when being stored (persistent encryption)",
+            "dpv:hasPersonalDataCategory": ["IPAddress,Credit Card Number,Password"]
+        }
+    ],
+    "dpv:Risk": [
+        {
+            "resource": "Risk1",
+            "schema:name": "Identity Theft",
+            "dpv:hasPersonalDataCategory": ["Name,Age,Email Address"]
+        },
+        {
+            "resource": "Risk2",
+            "schema:name": "Accidental Exposure",
+            "dpv:hasPersonalDataCategory": ["Name,Age,Email Address,Telephone Number,IPAddress,Credit Card Number,Password"]
         }
     ],
     "Cookie": [

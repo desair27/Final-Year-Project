@@ -1,7 +1,17 @@
 <article>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href={{url_for('static', filename='style.css')}}>
+    </head>
     {% set category = personalData["dpv:hasPersonalDataCategory"] %}
     {% set id = category|replace(' ','') %}
     {% set resource = personalData["resource"] %}
+    {% set recipients = data["dpv:Recipient"] %}
+
 
     <div resource="#{{id}}" id="{{id}}" typeof="{{id}}">
         <h3>Your {{category}}</h3>
@@ -17,7 +27,16 @@
         {% endif %}
         {% if personalData["dpv:hasRecipient"] | length != 0 %}
             <h4>Receipients:</h4>
-            {{ macros.embed_rdfa(personalData,resource, id,"dpv:hasRecipient" ,"dpv:Recipient") }}
+            <ul>
+            {% for prop in personalData["dpv:hasRecipient"] %}
+            <li><span resource ="#resource" typeof="dpv:PersonalDataHandling">
+                <span property ="dpv:hasPersonalDataCategory" href="#id"></span>
+                <span property ="dpv:hasRecipient" resource ="#{{prop|replace(' ','')}}" typeof="dpv:Recipient">{{prop}}</span>
+            </span></li>
+            {% endfor %}
+            </ul>
+
+
         {% endif %}
         {% if personalData["dpv:Collect"] | length != 0 %}
             <h4>Source of Data:</h4>

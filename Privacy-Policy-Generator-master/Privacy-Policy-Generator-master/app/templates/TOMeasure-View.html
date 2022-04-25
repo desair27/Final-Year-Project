@@ -1,0 +1,39 @@
+{% extends "default.html" %}
+<hr>
+{% block content %}
+
+
+        <p>Our services use certain safety measures (technical and organisational measures) in order to protect
+            Your personal data</p>
+        <p>We hope to indicate for each safety measure of your personal data the following:</p>
+        <li>What personal data categories are affected</li>
+        <li>The description of the safety measure</li>
+
+        <p> We disclose your personal data to the following recipients: </p>
+
+        <p>
+            {% for tom in data["dpv:TechnicalOrganisationalMeasure"] %}
+                <li><a href="#{{tom['dpv:TechnicalOrganisationalMeasure']|replace(' ','')}}">{{tom["schema:name"]}}</a></li>
+            {% endfor %}
+        </p>
+            {% for item in data["dpv:TechnicalOrganisationalMeasure"] %}
+                <article>
+                    <span resource="#{{item['resource']}}" typeof="dpv:Store">
+                        <h3><span property="schema:name">{{item['schema:name']}}</span></h3>
+                        <h4>Personal Data Categories:</h4>
+                            <ul>
+                                {% for data in item['dpv:hasPersonalDataCategory'] %}
+                                <li><span property="dpv:hasPersonalDataCategory">{{data}}</span></li>
+                                {% endfor %}
+                            </ul>
+                        </span>
+                        <p>Description: <span property="schema:description">{{item['schema:description']}}</span></p>
+
+
+                    </span>
+                </article>
+            {% endfor %}
+
+        {
+
+{% endblock %}

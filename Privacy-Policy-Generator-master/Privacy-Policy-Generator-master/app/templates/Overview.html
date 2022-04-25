@@ -5,6 +5,7 @@
 
     <div id="Overview">
 
+
         <p>{{ company }} has 6 different views with their corresponding data sources: </p>
         <li>Personal Data View</li>
         <ul>
@@ -31,6 +32,19 @@
                 <li>{{recip["schema:name"]}}</li>
             {% endfor %}
         </ul>
+        <li>Safety Measure View</li>
+        <ul>
+            {% for tom in data["dpv:TechnicalOrganisationalMeasure"] %}
+                <li>{{tom["schema:name"]}}</li>
+            {% endfor %}
+        </ul>
+        <li>Risk View</li>
+        <ul>
+            {% for risk in data["dpv:Risk"] %}
+                <li>{{risk["schema:name"]}}</li>
+            {% endfor %}
+        </ul>
+
 
         <li>Cookies</li>
         <ul>
@@ -38,6 +52,7 @@
                 <li>{{cook["schema:name"]}}</li>
             {% endfor %}
         </ul>
+
 
         <li>Rights</li>
         <ul><li>Access</li></ul>

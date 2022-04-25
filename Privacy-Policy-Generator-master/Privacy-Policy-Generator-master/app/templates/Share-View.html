@@ -1,5 +1,6 @@
 {% extends "default.html" %}
 {% block content %}
+    {% if data["dpv:Recipient"] | length != 0 %}
     {% set recipients = data["dpv:Recipient"] %}
     <div id = "ShareView">
         <p>Our services may distribute your personal data to a set of recipients</p>
@@ -19,5 +20,8 @@
             {% include "Recipient.html" %}
         {% endfor %}
     </div>
+    {%else%}
+    <p>This website does not send your data to any other party</p>
+    {%endif%}
 
 {% endblock %}

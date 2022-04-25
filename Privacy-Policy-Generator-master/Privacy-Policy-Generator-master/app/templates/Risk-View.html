@@ -1,0 +1,33 @@
+{% extends "default.html" %}
+<hr>
+{% block content %}
+
+
+
+
+        <p>This view should indicate the different risk(s) that your personal data faces should you choose to use
+            our services. We hope to indicate the different personal data categories that could be affected by
+            these risks in this view.</p>
+        <p>
+            {% for risk in data["dpv:Risk"] %}
+                <li><a href="#{{risk['dpv:Risk']|replace(' ','')}}">{{risk["schema:name"]}}</a></li>
+            {% endfor %}
+        </p>
+            {% for item in data["dpv:Risk"] %}
+                <article>
+                    <span resource="#{{item['resource']}}" typeof="dpv:Store">
+                        <h3><span property="schema:name">{{item['schema:name']}}</span></h3>
+                        <h4>Personal Data Categories:</h4>
+                            <ul>
+                                {% for data in item['dpv:hasPersonalDataCategory'] %}
+                                <li><span property="dpv:hasPersonalDataCategory">{{data}} </span></li>
+                                {% endfor %}
+                            </ul>
+                        </span>
+                    </span>
+                </article>
+            {% endfor %}
+
+        {
+
+{% endblock %}

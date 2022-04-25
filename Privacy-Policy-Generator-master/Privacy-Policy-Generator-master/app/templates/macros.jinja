@@ -17,6 +17,31 @@
     </ul>
 {% endmacro %}
 
+{% macro embed_rdfa_two(list, id, class_id, property,type) %}
+
+    <ul>
+        {% for prop in list[property] %}
+            <li><span resource ="#{{id}}" typeof="dpv:PersonalDataHandling">
+
+                <span property ="dpv:hasPersonalDataCategory" href="#{{class_id}}"></span>
+
+                <span property ="{{property}}" resource ="#{{prop|replace(' ','')}}" typeof="{{type}}">{{prop}}</span>
+                <div class="tooltip">
+                &#x1F6C8
+                <span class="tooltiptext">
+                    {% include "Recipient.html" %}
+                <ul>
+
+
+                </ul>
+                </span>
+                </div>
+                <div class="hide">I am shown when someone hovers over the div above.</div>
+                </span></li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
+
 {% macro tooltip(dpv, category) %}
     <div class="tooltip"><a class="link" href="http://w3.org/ns/dpv#{{category|replace(' ','')}}">&#x1F6C8</a>
         {% autoescape false %}

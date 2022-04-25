@@ -1,5 +1,5 @@
 <article>
-    {% if data["dpv:Recipient"] | length != 0 %}
+
         {% set name = recip["schema:name"] %}
         <span resource="#{{recip['resource']}}" typeof="dpv:Recipient">
             <h3><span property="schema:name">{{name}}</span></h3>
@@ -36,6 +36,6 @@
             {% autoescape false %}
                 <h4><span property="schema:address">{{recip["schema:address"]|replace("\n","</br>")}}</span></h4>
             {% endautoescape %}
-    </span>
-    {% else %}
+        </span>
+
 </article>

@@ -19,6 +19,7 @@
             "dpv:hasRecipient": [],
             "dpv:hasTechnicalOrganisationalMeasure": [],
             "dpv:hasLegalBasis": [],
+            "dpv:hasRisk": [],
             "dpv:Collect": [],
             "dpv:StorageDuration": "",
             "dpv:StorageLocation": ""
@@ -41,6 +42,21 @@
             "schema:phoneNumber": ""
         }
     ],
+    "dpv:TechnicalOrganisationalMeasure": [
+        {
+            "resource": "",
+            "schema:name":"",
+            "schema:description": "",
+            "dpv:hasPersonalDataCategory": []
+        }
+    ],
+     "dpv:Risk": [
+        {
+            "resource": "",
+            "schema:name": "",
+            "dpv:hasPersonalDataCategory": []
+        }
+     ],
     "Cookie": [
         {
             "resource": "",
