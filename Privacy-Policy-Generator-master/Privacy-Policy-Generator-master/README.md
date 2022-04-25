@@ -1,7 +1,5 @@
 # Privacy Policy Generator
 
-4th year Final Year project. This generator creates privacy policies that are embedded with RDFa annotations to make them machine readable. The input is supplied via JSON and is rather strict on layout, so follow the sample file provided.
-A live version of this server can be found at https://eoleahy.pythonanywhere.com/.
 
 ## Getting Started
 
@@ -35,6 +33,12 @@ If the dependencies have succesfully installed, run the server with:
 python app/app.py
 ```
 Visit the homepage at localhost:5000.
+
+Once you are done using the input JSON generator, there will be json objects created from the generator that will look like this 
+("dpv:hasPurpose": "x", "y", "z") when they should look like this ("dpv:hasPurpose": ["x, y, z"]). To see which of these objects 
+Need square brackets around them make sure to download the input JSON skeleton and take a look at which JSON objects require
+square brackets. This should be the last step taken in order to generate a usable JSON file for the privacy policy
+generator.
 
 ## License
 
