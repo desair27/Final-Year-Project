@@ -40,6 +40,9 @@ Need square brackets around them make sure to download the input JSON skeleton a
 square brackets. This should be the last step taken in order to generate a usable JSON file for the privacy policy
 generator.
 
+If you want a general idea as to what the generated privacy policy is supposed to look like then download the sample JSON file
+and upload it to the generator to render a sample privacy policy.
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details.
